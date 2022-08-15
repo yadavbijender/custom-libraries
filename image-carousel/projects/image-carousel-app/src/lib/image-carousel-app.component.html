@@ -1,0 +1,27 @@
+<div fxLayout="column" style="width: 100%;">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div>
+            <button mat-icon-button (click)="previous()" [disabled]="!isPreviousVisible()">
+                <mat-icon style="cursor: pointer;">navigate_before</mat-icon>
+            </button>
+        </div>
+        <img class="image-dimension" [src]="selectedImage">
+        <div>
+            <button mat-icon-button (click)="next()" [disabled]="!isNextVisible()">
+                <mat-icon style="cursor: pointer;">navigate_next</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <div *ngFor="let imag of imageList; let i = index" (click)="selectImage(imag)">
+                <img class="small-image-dimension" [ngStyle]="{border: imag == selectedImage ? '2px solid black':'1px solid black'}" [src]="imag">
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <div *ngFor="let imag of imageList; let i = index" (click)="selectImage(imag)">
+                <div class="circle" [ngStyle]="{backgroundColor: imag == selectedImage ? 'black':'white'}"></div>
+            </div>
+        </div>
+    </div>
+</div>
