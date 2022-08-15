@@ -1,0 +1,12 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" class="toolbarStyle">
+    <div fxLayout="row">
+        <button *ngIf="back" mat-icon-button (click)="backBtnClickEvent()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <img *ngIf="imgSrc" [src]="imgSrc">
+        <div *ngIf="title" class="ellip" [matTooltip]="title">{{title}}</div>
+    </div>
+    <div fxLayout="row">
+        <ng-content></ng-content>
+    </div>
+</div>
