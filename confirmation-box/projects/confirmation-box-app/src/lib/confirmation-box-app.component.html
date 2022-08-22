@@ -1,0 +1,45 @@
+<div>
+    <div mat-dialog-title>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div>{{data?.title}}</div>
+            <button mat-icon-button [mat-dialog-close]>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<div>
+    <div mat-dialog-content>
+        <div *ngIf="data?.message" fxLayout="row">
+            <div>{{data.message}}</div>
+        </div>
+        <div *ngIf="data?.reasonLabel">
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>{{data.reasonLabel}}</mat-label>
+                <input matInput [formControl]="textMessage">
+            </mat-form-field>
+        </div>
+        <div *ngIf="data?.selectReasonLabel">
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>{{data.selectReasonLabel}}</mat-label>
+                <mat-select [formControl]="selectReason">
+                    <mat-option *ngFor="let reason of data.selectReasonList" [value]="reason">
+                        {{reason}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+<div>
+    <div mat-dialog-actions>
+        <div style="margin-left: auto;">
+            <button *ngIf="data?.cancelButtonLabel" mat-raised-button [mat-dialog-close]>
+                {{data.cancelButtonLabel}}
+            </button>
+            <button *ngIf="data?.confirmButtonLabel" mat-raised-button (click)="sure()">
+                {{data.confirmButtonLabel}}
+            </button>
+        </div>
+    </div>
+</div>
